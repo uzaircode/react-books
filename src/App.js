@@ -1,4 +1,5 @@
 import './index.css';
+import uuid from 'react-uuid';
 import { useState } from 'react';
 import BookCreate from './components/BookCreate';
 
@@ -6,7 +7,7 @@ function App() {
   const [books, setBook] = useState([]);
 
   const createBook = (title) => {
-    const updatedBooks = [...books, { id: 123, title: title }];
+    const updatedBooks = [...books, { id: uuid(), title: title }];
 
     setBook(updatedBooks);
   };
