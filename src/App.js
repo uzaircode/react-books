@@ -2,11 +2,22 @@ import './index.css';
 import uuid from 'react-uuid';
 import axios from 'axios';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import BookCreate from './components/BookCreate';
 import BookList from './components/BookList';
 
 function App() {
   const [books, setBook] = useState([]);
+
+  const fetchBooks = async () => {
+    const response = await axios.get('http://localhost:3001/books');
+
+    setBook(response.data);
+  };
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
 
   const createBook = async (title) => {
     const response = await axios.post('http://localhost:3001/books', {
