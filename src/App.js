@@ -7,12 +7,12 @@ import BookCreate from './components/BookCreate';
 import BookList from './components/BookList';
 
 function App() {
-  const [books, setBook] = useState([]);
+  const [books, setBooks] = useState([]);
 
   const fetchBooks = async () => {
     const response = await axios.get('http://localhost:3001/books');
 
-    setBook(response.data);
+    setBooks(response.data);
   };
 
   useEffect(() => {
@@ -24,10 +24,10 @@ function App() {
       title: title,
     });
 
-    setBook(response);
+    setBooks(response);
 
     const updatedBooks = [...books, response.data];
-    setBook(updatedBooks);
+    setBooks(updatedBooks);
     console.log(updatedBooks);
   };
 
@@ -44,7 +44,7 @@ function App() {
       return book;
     });
 
-    setBook(updatedBooks);
+    setBooks(updatedBooks);
   };
 
   const deleteBookById = async (id) => {
@@ -54,7 +54,7 @@ function App() {
       return book.id !== id;
     });
 
-    setBook(updatedBooks);
+    setBooks(updatedBooks);
   };
 
   return (
