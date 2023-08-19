@@ -1,5 +1,18 @@
+import { useState } from 'react';
+import BookCreate from './components/BookCreate';
+
 function App() {
-  return <div></div>;
+  const [books, SetBook] = useState([]);
+
+  const createBook = (title) => {
+    console.log('Need to add book with:', title);
+  };
+
+  return (
+    <div>
+      <BookCreate onCreate={createBook} />
+    </div>
+  );
 }
 
 export default App;
