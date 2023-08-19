@@ -3,10 +3,12 @@ import { useState } from 'react';
 import BookCreate from './components/BookCreate';
 
 function App() {
-  const [books, SetBook] = useState([]);
+  const [books, setBook] = useState([]);
 
   const createBook = (title) => {
-    console.log('Need to add book with:', title);
+    const updatedBooks = [...books, { id: 123, title: title }];
+
+    setBook(updatedBooks);
   };
 
   return (
